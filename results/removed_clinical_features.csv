@@ -1,0 +1,8 @@
+feature,reason,missing_count,missing_percentage
+Lymph Nodes Positive,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Lymph Nodes Tested,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Metastasis At Diagnosis,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Lymphatic Invasion Present,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Perineural Invasion Present,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Vascular Invasion Present,100% missing in CPTAC-PDA clinical cohort,144,100.0
+Margins Involved Site,100% missing in CPTAC-PDA clinical cohort,144,100.0
