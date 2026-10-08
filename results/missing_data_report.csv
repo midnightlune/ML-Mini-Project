@@ -1,0 +1,28 @@
+variable,missing_count,total,missing_percentage
+Lymph Nodes Positive,144,144,100.0
+Metastasis At Diagnosis,144,144,100.0
+Tumor Regression Grade,144,144,100.0
+Margins Involved Site,144,144,100.0
+Vascular Invasion Type,144,144,100.0
+Vascular Invasion Present,144,144,100.0
+Perineural Invasion Present,144,144,100.0
+Lymphatic Invasion Present,144,144,100.0
+Metastasis At Diagnosis Site,144,144,100.0
+Lymph Nodes Tested,144,144,100.0
+Ethnicity,114,144,79.16666666666666
+Days to Death,29,144,20.13888888888889
+AJCC Pathologic T,3,144,2.083333333333333
+AJCC Pathologic Stage,3,144,2.083333333333333
+AJCC Pathologic N,2,144,1.3888888888888888
+Sex,0,144,0.0
+Case Submitter ID,0,144,0.0
+Age at Diagnosis,0,144,0.0
+Race,0,144,0.0
+AJCC Pathologic M,0,144,0.0
+Tumor Grade,0,144,0.0
+Days to Last Follow Up,0,144,0.0
+Vital Status,0,144,0.0
+Age_years,0,144,0.0
+survival_event,0,144,0.0
+survival_time_days,0,144,0.0
+survival_time_months,0,144,0.0
