@@ -1,0 +1,3 @@
+# Install in addition to requirements.txt when running src/radiomics/01_extract_features.py
+SimpleITK>=2.3,<3
+pyradiomics>=3.0,<4
