@@ -21,6 +21,10 @@ Windows:
 
 Linux/macOS: To Be Added
 
+```bash
+pip install -r requirements.txt
+```
+
 For image feature extraction, also install:
 
 ```bash
