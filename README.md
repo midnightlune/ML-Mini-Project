@@ -7,7 +7,7 @@ Project Status
 Data
 Repository Layout
 
-## Installation
+## Installation 
 
 ```bash
 py -m venv .venv
