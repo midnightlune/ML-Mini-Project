@@ -19,7 +19,12 @@ Windows:
 .venv\Scripts\activate
 ```
 
-Linux/macOS: To Be Added
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
 
 ```bash
 pip install -r requirements.txt
@@ -46,10 +51,3 @@ py src/7_coxriskkm.py
 py src/8_finalresults.py
 
 ```
-
-To Be Added:
-
-Key outputs
-Radiomics
-Survival Endpoints
-Limitations
