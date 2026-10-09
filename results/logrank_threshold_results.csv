@@ -1,2 +1,0 @@
-threshold_days,group_0_label,group_1_label,group_0_n,group_1_n,logrank_test_statistic,p_value
-360,<= 360 days,> 360 days,52,91,175.55333562601828,4.532872096265342e-40

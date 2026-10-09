@@ -1,165 +1,110 @@
-# MISSING DATA
-import pandas as pd
-import matplotlib.pyplot as plt
+"""
+1_datamain.py
+
+Missing-data report and exploratory analysis of the clinical dataset.
+
+Outputs (in results/):
+    - missing_data_report.csv
+    - age_distribution.png
+    - tumor_grade_distribution.png
+    - survival_time_distribution.png
+"""
+
 from pathlib import Path
 
-INPUT_PATH = Path(
-    "data/processed/clinical_survival_clean.csv"
-)
+import pandas as pd
+import matplotlib.pyplot as plt
 
-OUTPUT_PATH = Path(
-    "results/missing_data_report.csv"
-)
 
-OUTPUT_PATH.parent.mkdir(
-    parents=True,
-    exist_ok=True
-)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-df = pd.read_csv(INPUT_PATH)
+INPUT_FILE = PROJECT_ROOT / "data" / "processed" / "clinical_survival_clean.csv"
+RESULTS_DIR = PROJECT_ROOT / "results"
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
+MISSING_REPORT_FILE = RESULTS_DIR / "missing_data_report.csv"
+
+
+if not INPUT_FILE.exists():
+    raise FileNotFoundError(
+        f"\nClinical survival file not found:\n{INPUT_FILE}\n\n"
+        "Run the data-cleaning script that creates "
+        "clinical_survival_clean.csv first."
+    )
+
+df = pd.read_csv(INPUT_FILE)
+
+
+# MISSING DATA REPORT
 report = pd.DataFrame({
     "variable": df.columns,
-    "missing_count": df.isna().sum(),
+    "missing_count": df.isna().sum().values,
     "total": len(df),
 })
-
-report["missing_percentage"] = (
-    report["missing_count"] /
-    report["total"] * 100
-)
-
-report = report.sort_values(
-    "missing_percentage",
-    ascending=False
-)
-
+report["missing_percentage"] = report["missing_count"] / report["total"] * 100
+report = report.sort_values("missing_percentage", ascending=False)
 
 print(report.to_string(index=False))
+report.to_csv(MISSING_REPORT_FILE, index=False)
+print(f"\nSaved: {MISSING_REPORT_FILE}")
 
-report.to_csv(
-    OUTPUT_PATH,
-    index=False
-)
-
-print("\nSaved:")
-print(OUTPUT_PATH)
-
-# EXPLORATORY ANALYSIS
-
-RESULTS_DIR = Path("results")
-RESULTS_DIR.mkdir(
-    parents=True,
-    exist_ok=True
-)
 
 # BASIC SUMMARY
-print("CLINICAL DATA SUMMARY")
+print("\nCLINICAL DATA SUMMARY")
 print("=" * 60)
+print(f"\nNumber of patients: {len(df)}")
 
-print("\nNumber of patients:")
-print(len(df))
+if "Age_years" in df.columns:
+    print("\nAge statistics:")
+    print(df["Age_years"].describe())
 
-print("\nAge statistics:")
-print(df["Age_years"].describe())
+for column in ("Sex", "Tumor Grade", "AJCC Pathologic Stage", "survival_event"):
+    if column in df.columns:
+        print(f"\n{column}:")
+        print(df[column].value_counts(dropna=False))
 
-print("\nSex:")
-print(df["Sex"].value_counts())
 
-print("\nTumor Grade:")
-print(df["Tumor Grade"].value_counts())
+def save_current_figure(name):
+    plt.tight_layout()
+    plt.savefig(RESULTS_DIR / name, dpi=300)
+    plt.close()
 
-print("\nAJCC Pathologic Stage:")
-print(df["AJCC Pathologic Stage"].value_counts())
-
-print("\nSurvival event:")
-print(df["survival_event"].value_counts())
-
-# AGE DISTRIBUTION
-plt.figure(figsize=(8, 5))
-
-plt.hist(
-    df["Age_years"].dropna(),
-    bins=15
-)
-
-plt.xlabel("Age at Diagnosis (years)")
-plt.ylabel("Number of Patients")
-plt.title("Age Distribution")
-
-plt.tight_layout()
-
-plt.savefig(
-    RESULTS_DIR / "age_distribution.png",
-    dpi=300
-)
-
-#plt.show()
 
 # AGE DISTRIBUTION
-plt.figure(figsize=(8, 5))
+if "Age_years" in df.columns:
+    plt.figure(figsize=(8, 5))
+    plt.hist(df["Age_years"].dropna(), bins=15)
+    plt.xlabel("Age at Diagnosis (years)")
+    plt.ylabel("Number of Patients")
+    plt.title("Age Distribution")
+    save_current_figure("age_distribution.png")
 
-plt.hist(
-    df["Age_years"].dropna(),
-    bins=15
-)
-
-plt.xlabel("Age at Diagnosis (years)")
-plt.ylabel("Number of Patients")
-plt.title("Age Distribution")
-
-plt.tight_layout()
-
-plt.savefig(
-    RESULTS_DIR / "age_distribution.png",
-    dpi=300
-)
-
-#plt.show()
 
 # TUMOR GRADE
+if "Tumor Grade" in df.columns:
+    plt.figure(figsize=(8, 5))
+    df["Tumor Grade"].value_counts().plot(kind="bar")
+    plt.xlabel("Tumor Grade")
+    plt.ylabel("Number of Patients")
+    plt.title("Tumor Grade Distribution")
+    save_current_figure("tumor_grade_distribution.png")
 
-grade_counts = df["Tumor Grade"].value_counts()
-
-plt.figure(figsize=(8, 5))
-
-grade_counts.plot(
-    kind="bar"
-)
-
-plt.xlabel("Tumor Grade")
-plt.ylabel("Number of Patients")
-plt.title("Tumor Grade Distribution")
-
-plt.tight_layout()
-
-plt.savefig(
-    RESULTS_DIR / "tumor_grade_distribution.png",
-    dpi=300
-)
-
-#plt.show()
 
 # SURVIVAL TIME
+if "survival_time_months" in df.columns:
+    months = df["survival_time_months"]
+elif "survival_time_days" in df.columns:
+    months = df["survival_time_days"] / 30.44
+else:
+    months = None
 
-plt.figure(figsize=(8, 5))
+if months is not None:
+    plt.figure(figsize=(8, 5))
+    plt.hist(months.dropna(), bins=20)
+    plt.xlabel("Survival / Follow-up Time (months)")
+    plt.ylabel("Number of Patients")
+    plt.title("Survival Time Distribution")
+    save_current_figure("survival_time_distribution.png")
 
-plt.hist(
-    df["survival_time_months"],
-    bins=20
-)
-
-plt.xlabel("Survival / Follow-up Time (months)")
-plt.ylabel("Number of Patients")
-plt.title("Survival Time Distribution")
-
-plt.tight_layout()
-
-plt.savefig(
-    RESULTS_DIR / "survival_time_distribution.png",
-    dpi=300
-)
-
-#plt.show()
 
 print("\nEDA complete.")

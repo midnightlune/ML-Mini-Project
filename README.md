@@ -32,16 +32,14 @@ pip install -r requirements-radiomics.txt
 Run from the repository root. Script 1 onwards work with the processed dataset. 0 needs the original. 
 
 ```bash
-py src/01_datamain.py
-py src/02_kaplanmeier.py
-py src/03_coxmodel.py
-py src/04_preprocessclinical.py
-py src/05_naivebayesthreshold.py
-py src/06_smoteclassification.py
-py src/07_coxanalysis.py
-py src/08_logrankanalysis.py
-py src/09_coxriskkm.py
-py src/10_finalresults.py
+py src/1_datamain.py
+py src/2_kaplanmeier.py
+py src/3_naivebayesthreshold.py
+py src/4_smoteclassification.py
+py src/5_coxanalysis.py
+py src/6_logrankanalysis.py
+py src/7_coxriskkm.py
+py src/8_finalresults.py
 
 ```
 

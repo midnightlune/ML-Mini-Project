@@ -1,2 +1,2 @@
-model,n_patients,n_events,n_censored,c_index,penalizer,n_model_parameters
-Clinical-only Cox PH,143,115,28,0.679821922752978,0.1,32
+model,n_patients,n_events,n_censored,c_index,cv_c_index,penalizer,n_model_parameters,events_per_parameter
+Clinical-only Cox PH,143,115,28,0.6217061725424137,0.5652277129609343,0.5,11,10.454545454545455

@@ -1,8 +1,15 @@
-feature,reason,missing_count,total_rows
-Lymph Nodes Positive,100% missing,143,143
-Lymph Nodes Tested,100% missing,143,143
-Metastasis At Diagnosis,100% missing,143,143
-Lymphatic Invasion Present,100% missing,143,143
-Perineural Invasion Present,100% missing,143,143
-Vascular Invasion Present,100% missing,143,143
-Margins Involved Site,100% missing,143,143
+feature,reason
+Lymph Nodes Positive,100% missing
+Lymph Nodes Tested,100% missing
+Metastasis At Diagnosis,100% missing
+Lymphatic Invasion Present,100% missing
+Perineural Invasion Present,100% missing
+Vascular Invasion Present,100% missing
+Margins Involved Site,100% missing
+AJCC Pathologic T,Redundant with AJCC stage
+AJCC Pathologic N,Redundant with AJCC stage
+AJCC Pathologic M,Redundant with AJCC stage
+Race,Rare levels merged into 'Other': black or african american
+Ethnicity,Rare levels merged into 'Other': hispanic or latino
+Tumor Grade,Rare levels merged into 'Other': G4
+AJCC Pathologic Stage,"Rare levels merged into 'Other': Stage IV, Stage IA, Unknown, Stage IIIB, Stage I"

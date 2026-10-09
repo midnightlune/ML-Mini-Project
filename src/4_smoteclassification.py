@@ -8,7 +8,7 @@ Purpose:
 Important:
     - 100% missing features are removed.
     - Only patients with confirmed death are used.
-    - The survival threshold comes from script 09.
+    - The survival threshold comes from script 5.
     - Train/test split happens BEFORE SMOTENC.
     - SMOTENC is applied ONLY to the training data.
     - The test set is never oversampled.
@@ -68,7 +68,7 @@ CLASS_DISTRIBUTION_FILE = (
 
 REMOVED_FEATURES_FILE = (
     RESULTS_DIR
-    / "removed_clinical_features.csv"
+    / "removed_clinical_features_smote.csv"
 )
 
 
@@ -88,7 +88,8 @@ if not INPUT_FILE.exists():
 
     raise FileNotFoundError(
         f"\nClinical dataset not found:\n{INPUT_FILE}\n\n"
-        "Run 02_clean_clinical_data.py first."
+        "Run the data-cleaning script that creates "
+        "clinical_survival_clean.csv first."
     )
 
 
@@ -101,7 +102,7 @@ print(
 )
 
 
-# GET SELECTED THRESHOLD FROM SCRIPT 09
+# GET SELECTED THRESHOLD FROM SCRIPT 5
 threshold_file = (
     RESULTS_DIR
     / "naive_bayes_threshold_results.csv"
@@ -113,7 +114,7 @@ if not threshold_file.exists():
     raise FileNotFoundError(
         "\nThreshold results were not found:\n"
         f"{threshold_file}\n\n"
-        "Run 09_naive_bayes_threshold.py first."
+        "Run 5_naivebayesthreshold.py first."
     )
 
 

@@ -73,7 +73,6 @@ print("\nLoading clinical survival data...")
 if not INPUT_FILE.exists():
     raise FileNotFoundError(
         f"\nInput file not found:\n{INPUT_FILE}\n\n"
-        "Run 02_clean_clinical_data.py first."
     )
 
 df = pd.read_csv(INPUT_FILE)

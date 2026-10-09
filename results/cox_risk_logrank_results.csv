@@ -1,2 +1,2 @@
-risk_threshold,low_risk_n,high_risk_n,low_risk_events,high_risk_events,logrank_test_statistic,logrank_p_value
-0.9097530123501086,72,71,49,66,22.771015560432243,1.8249744732264364e-06
+risk_threshold,low_risk_n,high_risk_n,low_risk_events,high_risk_events,logrank_test_statistic,logrank_p_value,penalizer,risk_score_type
+0.9435856275701856,72,71,52,63,1.7548009006696754,0.18527432883240522,0.5,out-of-fold (5-fold CV)
