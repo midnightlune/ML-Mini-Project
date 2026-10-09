@@ -1,0 +1,2 @@
+risk_threshold,low_risk_n,high_risk_n,low_risk_events,high_risk_events,logrank_test_statistic,logrank_p_value
+0.9097530123501086,72,71,49,66,22.771015560432243,1.8249744732264364e-06
