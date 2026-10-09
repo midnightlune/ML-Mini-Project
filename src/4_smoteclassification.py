@@ -88,8 +88,6 @@ if not INPUT_FILE.exists():
 
     raise FileNotFoundError(
         f"\nClinical dataset not found:\n{INPUT_FILE}\n\n"
-        "Run the data-cleaning script that creates "
-        "clinical_survival_clean.csv first."
     )
 
 

@@ -6,7 +6,7 @@ Clinical-only Cox Proportional Hazards analysis (stabilized).
 Preprocessing and fitting live in cox_utils.py (shared with script 9).
 The penalizer is chosen by cross-validated C-index.
 
-Outputs (same filenames as before, so script 10 keeps working):
+Outputs:
     - cox_full_results.csv
     - clinical_model_summary.csv      (adds penalizer, cv_c_index)
     - cox_proportional_hazards_test.csv
