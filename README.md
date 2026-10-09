@@ -7,7 +7,7 @@ Project Status
 Data
 Repository Layout
 
-## Installation
+## Installation 
 
 ```bash
 py -m venv .venv
@@ -51,3 +51,10 @@ py src/7_coxriskkm.py
 py src/8_finalresults.py
 
 ```
+To Be Added:
+
+Key outputs
+Radiomics
+Survival Endpoints
+Limitations
+
