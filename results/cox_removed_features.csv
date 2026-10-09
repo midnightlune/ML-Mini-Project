@@ -1,0 +1,8 @@
+feature,reason,missing_count,total_rows
+Lymph Nodes Positive,100% missing,143,143
+Lymph Nodes Tested,100% missing,143,143
+Metastasis At Diagnosis,100% missing,143,143
+Lymphatic Invasion Present,100% missing,143,143
+Perineural Invasion Present,100% missing,143,143
+Vascular Invasion Present,100% missing,143,143
+Margins Involved Site,100% missing,143,143
