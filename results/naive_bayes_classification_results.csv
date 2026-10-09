@@ -1,0 +1,2 @@
+threshold_days,accuracy,balanced_accuracy,recall,f1,roc_auc,train_samples_before_smote,train_samples_after_smote,test_samples
+360,0.43478260869565216,0.41666666666666663,0.5,0.5185185185185185,0.5317460317460317,92,116,23
